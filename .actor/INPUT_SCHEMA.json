@@ -1,0 +1,99 @@
+{
+  "title": "SEC EDGAR Scraper input",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "scrapeType": {
+      "title": "Scrape type",
+      "type": "string",
+      "description": "company = profile; filings = filing list; facts = XBRL financial facts; form4 = insider transactions; search = EDGAR full-text search.",
+      "default": "filings",
+      "enum": ["company", "filings", "facts", "form4", "search"]
+    },
+    "companies": {
+      "title": "Companies",
+      "type": "array",
+      "description": "Tickers, CIK numbers or EDGAR URLs, e.g. [\"AAPL\", \"0000320193\", \"TSLA\"].",
+      "editor": "stringList"
+    },
+    "formTypes": {
+      "title": "Form types (filings mode)",
+      "type": "array",
+      "description": "Filter filings by form type, e.g. [\"10-K\", \"10-Q\", \"8-K\"]. Empty = all.",
+      "editor": "stringList"
+    },
+    "concepts": {
+      "title": "XBRL concepts (facts mode)",
+      "type": "array",
+      "description": "Substring filters for XBRL concepts, e.g. [\"Revenue\", \"NetIncomeLoss\"]. Empty = all concepts (large).",
+      "editor": "stringList"
+    },
+    "maxFilingsPerCompany": {
+      "title": "Max filings per company",
+      "type": "integer",
+      "description": "Cap on filings collected per company.",
+      "default": 40,
+      "minimum": 1
+    },
+    "maxFactsPerCompany": {
+      "title": "Max facts per company",
+      "type": "integer",
+      "description": "Cap on XBRL facts collected per company.",
+      "default": 2000,
+      "minimum": 1
+    },
+    "maxForm4PerCompany": {
+      "title": "Max Form 4 filings per company",
+      "type": "integer",
+      "description": "Recent Form 4 filings to parse per company.",
+      "default": 10,
+      "minimum": 1
+    },
+    "maxTransactionsPerFiling": {
+      "title": "Max transactions per Form 4",
+      "type": "integer",
+      "description": "Cap on insider transactions extracted per Form 4 filing.",
+      "default": 100,
+      "minimum": 1
+    },
+    "searchQuery": {
+      "title": "Search query (search mode)",
+      "type": "string",
+      "description": "Full-text search query, e.g. \"artificial intelligence\" or a company/product term.",
+      "editor": "textfield"
+    },
+    "searchForms": {
+      "title": "Search form types (search mode)",
+      "type": "array",
+      "description": "Filter search by form type, e.g. [\"10-K\", \"8-K\"].",
+      "editor": "stringList"
+    },
+    "dateFrom": {
+      "title": "Search from date (search mode)",
+      "type": "string",
+      "description": "Start date YYYY-MM-DD.",
+      "editor": "textfield"
+    },
+    "dateTo": {
+      "title": "Search to date (search mode)",
+      "type": "string",
+      "description": "End date YYYY-MM-DD.",
+      "editor": "textfield"
+    },
+    "searchLimit": {
+      "title": "Search result limit (search mode)",
+      "type": "integer",
+      "description": "Max search results.",
+      "default": 100,
+      "minimum": 1
+    },
+    "maxItems": {
+      "title": "Max rows total",
+      "type": "integer",
+      "description": "Overall cap on rows pushed to the dataset.",
+      "default": 100000,
+      "minimum": 1
+    }
+  },
+  "required": []
+}

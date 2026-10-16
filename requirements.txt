@@ -1,0 +1,1 @@
+# Dependency-free (stdlib + Apify REST). Nothing to install.

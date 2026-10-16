@@ -1,0 +1,62 @@
+{
+  "actorSpecification": 1,
+  "name": "sec-edgar-scraper",
+  "title": "SEC EDGAR Scraper — Filings, Financials & Insider Trades",
+  "description": "Scrape SEC EDGAR: company filings, XBRL financial facts, Form 4 insider transactions and full-text search. Get CIK, form type, filing dates, document URLs, financial values and insider buy/sell details. Normalized, with provenance on every row.",
+  "version": "0.0",
+  "buildTag": "latest",
+  "meta": { "templateId": "python-start" },
+  "dockerfile": "../Dockerfile",
+  "readme": "../README.md",
+  "input": "./INPUT_SCHEMA.json",
+  "categories": ["BUSINESS", "DEVELOPER_TOOLS", "OTHER"],
+  "minMemoryMbytes": 256,
+  "maxMemoryMbytes": 2048,
+  "output": {
+    "actorOutputSchemaVersion": 1,
+    "title": "SEC EDGAR output",
+    "description": "Company profiles, filings, XBRL financial facts, Form 4 insider transactions and full-text search results.",
+    "properties": {
+      "results": { "type": "string", "title": "Rows", "template": "{{links.apiDefaultDatasetUrl}}/items" }
+    }
+  },
+  "storages": {
+    "dataset": {
+      "actorSpecification": 1,
+      "fields": {
+        "record_type": "string",
+        "cik": "string", "name": "string", "entity_type": "string", "sic": "string",
+        "sic_description": "string", "tickers": "array", "exchanges": "array",
+        "ein": "string", "lei": "string", "fiscal_year_end": "string",
+        "state_of_incorporation": "string", "category": "string",
+        "website": "string", "investor_website": "string", "phone": "string",
+        "address_street1": "string", "address_city": "string", "address_state": "string",
+        "address_zip": "string", "mailing_city": "string", "former_names": "array",
+        "insider_transactions_present": "boolean",
+        "company_name": "string", "form": "string", "filing_date": "string",
+        "report_date": "string", "acceptance_datetime": "string", "accession_number": "string",
+        "primary_document": "string", "primary_doc_url": "string", "filing_index_url": "string",
+        "film_number": "string", "items_reported": "string", "size": "integer",
+        "is_xbrl": "integer", "is_inline_xbrl": "integer", "is_amendment": "boolean",
+        "description": "string",
+        "taxonomy": "string", "concept": "string", "label": "string", "unit": "string",
+        "value": "number", "start": "string", "end": "string", "fy": "integer", "fp": "string",
+        "filed": "string", "frame": "string", "accn": "string",
+        "issuer_cik": "string", "issuer_name": "string", "issuer_symbol": "string",
+        "is_derivative": "boolean", "owner_cik": "string", "owner_name": "string",
+        "is_director": "boolean", "is_officer": "boolean", "is_ten_percent_owner": "boolean",
+        "is_other": "boolean", "officer_title": "string", "security_title": "string",
+        "transaction_date": "string", "transaction_form_type": "string",
+        "transaction_code": "string", "equity_swap_involved": "string", "shares": "number",
+        "price_per_share": "number", "acquired_disposed": "string", "shares_owned_after": "number",
+        "ownership_nature": "string", "underlying_security_title": "string",
+        "underlying_shares": "number", "conversion_or_exercise_price": "number",
+        "exercise_date": "string", "expiration_date": "string",
+        "query": "string", "file_date": "string", "period_ending": "string",
+        "document": "string", "document_url": "string",
+        "source_type": "string", "source_input": "string",
+        "schema_version": "string", "fetched_at": "string"
+      }
+    }
+  }
+}
